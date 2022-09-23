@@ -1,14 +1,27 @@
 package colecciones;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.TreeSet;
 
 public class Colecciones {
+	static TreeSet<String> ej1 = new TreeSet<>();
+	public static void main(String[] args) {
+		ej1.add("hola");
+		ej1.add("adios");
+		ej1.add("casa");
+		ej1.add("ola");
+		System.out.println(ej1);
+		eliminarLasDeLongitudPar(ej1);
+		System.out.println(ej1);
+	}
 	
-	public void eliminarLasDeLongitudPar(ArrayList<String> cadenas) {
-		for (String cadena : cadenas) {
-			if (cadena.length()%2 == 0) {
-				cadenas.remove(cadena);
+	public static void eliminarLasDeLongitudPar(TreeSet<String> cadenas) {
+		Iterator<String> it = cadenas.iterator();
+		while (it.hasNext()) {
+			if (it.next().length()%2==0) {
+				it.remove();
 			}
 		}
 	}

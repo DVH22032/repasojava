@@ -19,18 +19,24 @@ public class Ejercicio2 {
 		while (it.hasNext()) {
 			System.out.println(it.next());
 		}
-		LinkedHashSet<Integer> noRepetidos = new LinkedHashSet<>();
-		for (Integer numero : numeros) {
-			noRepetidos.add(numero);
-		}
+//		LinkedHashSet<Integer> noRepetidos = new LinkedHashSet<>();
+//		Mejor usar el constructor con otra coleccion como parametro
+//		for (Integer numero : numeros) {
+//			noRepetidos.add(numero);
+//		}
+		LinkedHashSet<Integer> noRepetidos = new LinkedHashSet<>(numeros);
+		
 		System.out.println("\nListado numeros LinkedHashSet");
 		for (Integer numero : noRepetidos) {
 			System.out.println(numero);
 		}
-		TreeSet<Integer> ordenados = new TreeSet<>();
-		for (Integer numero : noRepetidos) {
-			ordenados.add(numero);
-		}
+//		TreeSet<Integer> ordenados = new TreeSet<>();
+// 		Mejor usar el constructor con otra coleccion como parametro
+//		for (Integer numero : noRepetidos) {
+//			ordenados.add(numero);
+//		}
+		TreeSet<Integer> ordenados = new TreeSet<>(noRepetidos);
+		
 		System.out.println("\nListado numeros TreeSet");
 		ordenados.forEach(numero -> System.out.println(numero));
 		System.out.println("Tamaño ArrayList: " + numeros.size());

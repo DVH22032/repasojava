@@ -26,6 +26,7 @@ public class Ejercicio3 {
 				noRepetidas.add(temp);
 			}
 		}
+		s.close();
 //		String[] lista = frase.split(" ");
 //		for (String palabra : lista) {
 //			if (noRepetidas.contains(palabra)) {

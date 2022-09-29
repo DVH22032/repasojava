@@ -1,5 +1,11 @@
 package ejercicio4;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Iterator;
+import java.util.Map.Entry;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
@@ -33,7 +39,7 @@ public class Palabras {
 	 * conjunto, segun su longitud.
 	 */
 	public void insertarCadena(String cadena) {
-		String[] lista = cadena.split(" ");
+		String[] lista = cadena.split("[\\s\\W\\d]+");
 		for (int i=0; i<lista.length; i++) {
 			insertar(lista[i]);
 		}
@@ -71,7 +77,34 @@ public class Palabras {
 		
 	}
 	
-	public void sustituir(String cadena) {
-		
+	public void mostrarColeccion() {
+//		palabras.forEach(longitud, valores -> System.out.println("LONGITUD: %d - PALABRAS: %s\n", longitud, valores));
+//		for (Entry<Integer, TreeSet<String>> p: palabras.entrySet()) {
+//			System.out.printf("LONGITUD: %d - Nº PALABRAS: %d - PALABRAS: %s\n", p.getKey(),p.getValue().size() , p.getValue());
+//		}
+		if (!palabras.isEmpty()) {
+			Iterator<Entry<Integer, TreeSet<String>>> i = palabras.entrySet().iterator();
+			while (i.hasNext()) {
+				Entry<Integer, TreeSet<String>> e = i.next();
+				System.out.printf("LONGITUD: %d Nº DE PALABRAS: %d - PALABRAS: %s\n", e.getKey(),e.getValue().size(), e.getValue());
+			}
+		}
+		else {
+			System.out.println("LA COLECCION ESTA VACIA");
+		}
+	}
+	
+	public void leerFichero(String ruta) {
+		try (BufferedReader in = new BufferedReader(new FileReader(ruta))) {
+			String linea = in.readLine();
+			while (linea != null) {
+				insertarCadena(linea);
+				linea = in.readLine();
+			}
+		} catch (FileNotFoundException e) {
+			System.out.println("El fichero no se encuentra");
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 }

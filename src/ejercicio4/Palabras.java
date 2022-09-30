@@ -29,7 +29,7 @@ public class Palabras {
 	}
 	//METODOS
 	/**
-	 * Metodo que añade una palabra, que se la pasa como parametro, al conjunto
+	 * Metodo que aï¿½ade una palabra, que se la pasa como parametro, al conjunto
 	 * segun su longitud.
 	 * @param palabra
 	 */
@@ -44,7 +44,7 @@ public class Palabras {
 	}
 	
 	/**
-	 * Metodo que añade las palabras de una cadena, que se le pasa como parametro, al 
+	 * Metodo que aï¿½ade las palabras de una cadena, que se le pasa como parametro, al 
 	 * conjunto, segun su longitud.
 	 */
 	public void insertarCadena(String cadena) {
@@ -87,19 +87,34 @@ public class Palabras {
 	}
 	
 	/**
+	 * Metodo que borra todos los elementos de la coleccion.
+	 */
+	public void borrarColeccion() {
+		palabras.clear();
+	}
+	
+	/**
+	 * Metodo que comprueba si la coleccion esta vacia.
+	 * @return
+	 */
+	public boolean estaVacia() {
+		return palabras.isEmpty();
+	}
+	
+	/**
 	 * Metodo que muestra el contenido de la coleccion con el formato:
-	 * LONGITUD: (nº de letras de la palabra) Nº DE PALABRAS: (nº de palabras de esa longitud)
+	 * LONGITUD: (nï¿½ de letras de la palabra) Nï¿½ DE PALABRAS: (nï¿½ de palabras de esa longitud)
 	 */
 	public void mostrarColeccion() {
 //		palabras.forEach(longitud, valores -> System.out.println("LONGITUD: %d - PALABRAS: %s\n", longitud, valores));
 //		for (Entry<Integer, TreeSet<String>> p: palabras.entrySet()) {
-//			System.out.printf("LONGITUD: %d - Nº PALABRAS: %d - PALABRAS: %s\n", p.getKey(),p.getValue().size() , p.getValue());
+//			System.out.printf("LONGITUD: %d - Nï¿½ PALABRAS: %d - PALABRAS: %s\n", p.getKey(),p.getValue().size() , p.getValue());
 //		}
 		if (!palabras.isEmpty()) {
 			Iterator<Entry<Integer, TreeSet<String>>> i = palabras.entrySet().iterator();
 			while (i.hasNext()) {
 				Entry<Integer, TreeSet<String>> e = i.next();
-				System.out.printf("LONGITUD: %d Nº DE PALABRAS: %d\n", e.getKey(),e.getValue().size());
+				System.out.printf("LONGITUD: %d NÂº DE PALABRAS: %d\n", e.getKey(),e.getValue().size());
 			}
 		}
 		else {

@@ -18,6 +18,15 @@ public class Palabras {
 		palabras = new TreeMap<Integer, TreeSet<String>>();
 	}
 	
+	/**
+	 * Constructor que crea la estructura y almacena en ella las palabras que forman
+	 * parte de la cadena que se le pasa como parametro.
+	 * @param cadena
+	 */
+	public Palabras(String cadena) {
+		this();
+		insertarCadena(cadena);
+	}
 	//METODOS
 	/**
 	 * Metodo que añade una palabra, que se la pasa como parametro, al conjunto
@@ -77,6 +86,10 @@ public class Palabras {
 		
 	}
 	
+	/**
+	 * Metodo que muestra el contenido de la coleccion con el formato:
+	 * LONGITUD: (nº de letras de la palabra) Nº DE PALABRAS: (nº de palabras de esa longitud)
+	 */
 	public void mostrarColeccion() {
 //		palabras.forEach(longitud, valores -> System.out.println("LONGITUD: %d - PALABRAS: %s\n", longitud, valores));
 //		for (Entry<Integer, TreeSet<String>> p: palabras.entrySet()) {
@@ -86,7 +99,7 @@ public class Palabras {
 			Iterator<Entry<Integer, TreeSet<String>>> i = palabras.entrySet().iterator();
 			while (i.hasNext()) {
 				Entry<Integer, TreeSet<String>> e = i.next();
-				System.out.printf("LONGITUD: %d Nº DE PALABRAS: %d - PALABRAS: %s\n", e.getKey(),e.getValue().size(), e.getValue());
+				System.out.printf("LONGITUD: %d Nº DE PALABRAS: %d\n", e.getKey(),e.getValue().size());
 			}
 		}
 		else {
@@ -94,6 +107,11 @@ public class Palabras {
 		}
 	}
 	
+	/**
+	 * Metodo que lee un fichero cuya ruta se pasa como parametro y almacena las palabras en la
+	 * coleccion.
+	 * @param ruta
+	 */
 	public void leerFichero(String ruta) {
 		try (BufferedReader in = new BufferedReader(new FileReader(ruta))) {
 			String linea = in.readLine();

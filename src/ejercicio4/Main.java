@@ -8,9 +8,9 @@ public class Main {
 	
 	public static void main(String[] args) {
 		Palabras prueba = new Palabras();
-		prueba.leerFichero("El Quijote.txt");
+		prueba.leerFichero("El Quijote2.txt");
 		prueba.mostrarColeccion();
-		prueba.mostrarPalabras(0);
+		System.out.println(prueba.comprobar("house"));
 		
 //		Palabras lista = new Palabras("Esta cadena es de prueba");
 //		lista.mostrarColeccion();

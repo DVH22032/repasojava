@@ -4,8 +4,10 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.Map.Entry;
+import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
@@ -34,6 +36,7 @@ public class Palabras {
 	 * @param palabra
 	 */
 	public void insertar(String palabra) {
+//		if (!palabra.isEmpty()) {
 		int longitud = palabra.length();
 		TreeSet<String> valor = palabras.get(longitud);
 		if (valor == null) {
@@ -41,6 +44,7 @@ public class Palabras {
 			palabras.put(longitud, valor);
 		}
 		valor.add(palabra);
+//		}
 	}
 	
 	/**
@@ -58,31 +62,18 @@ public class Palabras {
 	 * Metodo que comprueba si una palabra, que se le pasa como parametro, esta contenida
 	 * en la estructura de datos.
 	 */
-	public void comprobar(String palabra) {
-		int longitud = palabra.length();
-		TreeSet<String> valor = palabras.get(longitud);
-		if (valor != null) {
-			if (valor.contains(palabra)) {
-				System.out.println("La palabra ya existe");
-			}
-			else {
-				System.out.println("La palabra no existe");
-			}
-		}
+	public boolean comprobar(String palabra) {
+		TreeSet<String> valor = palabras.get(palabra.length());
+		return valor != null && valor.contains(palabra);
 	}
 	
 	/**
 	 * Metodo que muestra todas las palabras de una longitud que se le pasa como parametro.
 	 * @param longitud
 	 */
-	public void mostrarPalabras(int longitud) {
+	public Set<String> mostrarPalabras(int longitud) {
 		TreeSet<String> valor = palabras.get(longitud);
-		if (valor != null) {
-			System.out.println(valor);
-		}
-		else {
-			System.out.println("No existen palabras de esa longitud");
-		}
+		return valor == null ? Collections.emptySet() : Collections.unmodifiableSet(valor);
 		
 	}
 	
